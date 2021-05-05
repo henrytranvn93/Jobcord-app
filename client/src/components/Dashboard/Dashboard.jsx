@@ -7,15 +7,14 @@ export default function Dashboard({user, signOut}) {
     const [jobList, setJobList] = useState([]);
 
     useEffect(() => {
-        console.log(user.uid);
         axios.get(`http://localhost:8080/jobs/${user.uid}`)
         .then(res => {
-            console.log(res.data)
+            setJobList(res.data);
         })
         .catch(err => {
             console.log(err)
         })
-    }, [])
+    }, [user.uid])
 
 
     return (

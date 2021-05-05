@@ -5,6 +5,7 @@ import logo from '../../assets/logo/logo-jobcord.png';
 import firebase from 'firebase';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import Dashboard from '../Dashboard/Dashboard';
+import uniqid from 'uniqid';
 
 firebase.initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
