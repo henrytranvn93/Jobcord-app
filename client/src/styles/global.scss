@@ -1,0 +1,21 @@
+@use './partials/mixin' as *;
+@use './partials/typography' as *;
+@use './partials/variables' as *;
+
+body {
+    margin: 0;
+    font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #fbfbfb;
+    padding: 0 16px;
+}
+
+.app {
+  background-color: #fbfbfb;
+}
+
+
+  

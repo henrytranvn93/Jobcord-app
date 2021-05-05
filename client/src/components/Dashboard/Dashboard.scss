@@ -1,0 +1,114 @@
+@use '../../styles/partials/variables' as *;
+
+.dashboard {
+
+    &__header {
+        display: flex;
+        margin: 2rem 0 0 0;
+    }
+
+    &__header-texts {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    &__header-text {
+        margin: 0 0 5px;
+    }
+
+    &__header-userName {
+        margin: 0;
+    }
+
+    &__avatar-container {
+        position: relative;
+        bottom: 10px;
+    }
+
+    &__image-container {
+        border-radius: 100%;
+        height: 60px;
+        width: 60px;
+        border: 2px solid $secondary;
+        display: flex;
+        overflow: hidden;
+        margin-right: 10px;
+    }
+
+    &__logout-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: $Ink;
+
+        &:hover {
+            color: $DarkInk;
+        }
+    }
+
+    &__add-button {
+        border: none;
+        border-radius: 10px;
+        background-color: $primary;
+        color: white;
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        font-size: 13px;
+        position: relative;
+        bottom: 5px;
+
+        &:hover {
+            background-color: $primary-hover;
+        }
+    }
+
+    &__search-bar {
+        position: relative;
+        margin: 0;
+      }
+    
+      &__search-input {
+          margin: 0;
+          padding: 0 0 0 1rem;
+          width: 100%;
+          box-sizing: border-box;
+          height: 56px;
+          border: 1px solid $border;
+          background-color: $background-white;
+          border-radius: 12px;
+          font-size: 13px;
+          font-family: "Rubik";
+    
+            &:focus {
+                outline: none;
+                border: 1px solid $secondary;
+                background-color: white;
+            }
+        }
+    
+      &__search-icon {
+          position: absolute;
+          right: 1rem;
+          bottom: 15px;
+      }
+
+      &__job-applications {
+          margin: 2rem 0;
+      }
+
+      &__job-application {
+          border: 2px solid $card-border;
+          height: 200px;
+          width: 100%;
+          border-radius: 8px;
+          box-sizing: border-box;
+          background-color: $card-background;
+
+          &:hover {
+              border: 2px solid $primary;
+          }
+      }
+}

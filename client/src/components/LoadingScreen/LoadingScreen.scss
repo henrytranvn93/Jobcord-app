@@ -1,0 +1,11 @@
+.loading-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__image {
+        position: relative;
+        top: 80px;
+        left: 8px;
+    }
+}
