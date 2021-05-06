@@ -106,9 +106,103 @@
           border-radius: 8px;
           box-sizing: border-box;
           background-color: $card-background;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-bottom: 1rem;
+        
 
           &:hover {
               border: 2px solid $primary;
           }
+      }
+      &__job-header {
+          margin: 1rem;
+      }
+
+      &__job-header-text {
+          margin: 0;
+          color: $DarkInk;
+       
+      }
+
+      &__job-body {
+          height: 165px;
+          
+          background-color: white;
+          padding: 0 1rem;
+      }
+
+      &__job-date {
+          color: $success;
+          margin: 0.5rem 0;
+      }
+
+      &__job-company {
+          margin: 0.5rem 0;
+      }
+
+      &__job-actions {
+          display: flex;
+          justify-content: space-between;
+      }
+
+      &__job-details {
+        border: none;
+        border-radius: 16px;
+        background-color: $secondary;
+        color: white;
+        cursor: pointer;
+        width: 55px;
+        height: 30px;
+        font-size: 12px;
+        position: relative;
+        bottom: 5px;
+
+        &:hover {
+            background-color: $secondary-hover;
+        }
+      }
+
+      &__delete {
+        border: none;
+        border-radius: 10px;
+        background-color: $primary;
+        color: white;
+        cursor: pointer;
+        width: 40px;
+        height: 30px;
+        font-size: 12px;
+        position: relative;
+        bottom: 5px;
+        margin-left: 4px;
+
+        &:hover {
+            background-color: $primary-hover;
+        }
+      }
+
+      &__edit {
+        border: 2px solid $card-border;
+        border-radius: 10px;
+        background-color: white;
+        color: $DarkInk;
+        cursor: pointer;
+        width: 40px;
+        height: 30px;
+        font-size: 12px;
+        position: relative;
+        bottom: 5px;
+
+        &:hover {
+            border: 2px solid $primary;
+        }
+      }
+
+      &__default-error {
+          color: $primary;
+          text-align: center;
+          margin: 0 2rem;
       }
 }

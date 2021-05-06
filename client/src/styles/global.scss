@@ -1,6 +1,7 @@
 @use './partials/mixin' as *;
 @use './partials/typography' as *;
 @use './partials/variables' as *;
+@import "~bootstrap/scss/bootstrap";
 
 body {
     margin: 0;

@@ -5,7 +5,6 @@ import logo from '../../assets/logo/logo-jobcord.png';
 import firebase from 'firebase';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import Dashboard from '../Dashboard/Dashboard';
-import uniqid from 'uniqid';
 
 firebase.initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -16,7 +15,7 @@ firebase.initializeApp({
     appId: process.env.REACT_APP_FIREBASE_APP_ID
 });
 
-export default function LoginPage() {
+export default function LoginPage({getUserUID}) {
     const [loading, setLoading] = useState(true);
     const [signedIn, setSignedIn] = useState(false);
 
@@ -29,7 +28,10 @@ export default function LoginPage() {
     useEffect(() => {
         const unregisterAuthObeserver = firebase.auth().onAuthStateChanged(user => {
             setSignedIn(!!user);
-            !!user && db.collection('users').doc(user.uid).set({name: user.displayName});
+            if(!!user) { 
+                db.collection('users').doc(user.uid).set({name: user.displayName});
+                getUserUID(firebase.auth().currentUser.uid);
+            }
         });
         return () => unregisterAuthObeserver();
     },);

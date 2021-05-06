@@ -1,0 +1,82 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixin' as *;
+
+.jobAdd {
+
+    &__back-button {
+        height: 40px;
+        width: 40px;
+        border: 1px solid $card-border;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            border: 1px solid $primary;
+        }
+    }
+
+    &__form {
+        margin-bottom: 50px;
+    }
+
+    &__input {
+        border-radius: 12px;
+    }
+
+    &__input-textarea {
+        resize: none;
+        height: 200px;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+    }
+
+    &__title {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    &__buttons {
+        margin-top: 10px;
+    }
+
+    &__submit-button {
+        color: white;
+        border-radius: 12px;
+
+        &:hover, :focus {
+            color: white;
+        }
+    }
+    &__cancel-button {
+        color: $DarkInk;
+        background-color: white;
+        border-radius: 12px;
+        margin-right: 10px;
+        box-shadow: inset 0 0 2px $primary;
+
+
+        &:hover, :focus {
+            color: white;
+        }
+    }
+}
+
+.form-group {
+    margin: 0.5rem 0;
+
+    @include tablet {
+        width: 100%;
+    }
+}
+
+.form-label {
+    margin: 4px 0;
+}
