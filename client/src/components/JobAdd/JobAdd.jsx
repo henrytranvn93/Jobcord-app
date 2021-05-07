@@ -26,7 +26,7 @@ export default function JobAdd({user, history}) {
                 company: formTarget.company.value,
                 date: convertDate(formTarget.date.value),
                 position: formTarget.position.value,
-                address: formTarget.address.value,
+                address: formTarget.postion.address,
                 city: formTarget.city.value,
                 state: formTarget.state.value,
                 country: formTarget.country.value,
@@ -104,10 +104,10 @@ export default function JobAdd({user, history}) {
                         <Form.Control 
                             type="text" 
                             placeholder="Address" 
-                            required
                             className="jobAdd__input"
                             name="address"
                         />
+                        <Form.Control.Feedback>Address is optional.</Form.Control.Feedback>
                         <Form.Control.Feedback type="invalid">
                             Please provide a valid address.
                         </Form.Control.Feedback>

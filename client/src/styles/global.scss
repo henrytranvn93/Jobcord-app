@@ -12,6 +12,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: #fbfbfb;
     padding: 0 16px;
+
+    @include tablet {
+      padding: 0 24px;
+    }
+
+    @include desktop {
+      padding: 0 130px;
+    }
 }
 
 .app {

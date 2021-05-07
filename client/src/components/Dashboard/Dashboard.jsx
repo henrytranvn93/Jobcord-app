@@ -4,6 +4,7 @@ import axios from 'axios';
 import './Dashboard.scss';
 import searchIcon from '../../assets/icons/search-24px.svg';
 import uniqid from 'uniqid';
+import kidsOnSkate from '../../assets/images/cool-kid-on-skate.svg';
 
 export default function Dashboard({user, signOut}) {
     const [jobList, setJobList] = useState([]);
@@ -67,7 +68,11 @@ export default function Dashboard({user, signOut}) {
                         </div>
                     </div>
                 </div>)
-                : <h5 className="dashboard__default-error">You do not have any job application, please add one!</h5>}
+                : <div className="dashboard__no-jobs">
+                    <img src={kidsOnSkate} alt="Cool Kid on wheels" className="dashboard__no-job-image" />
+                    <h5 className="dashboard__no-job-text">You do not have any job application, please add one!</h5>
+                </div>
+               }
              
             </div>
 
