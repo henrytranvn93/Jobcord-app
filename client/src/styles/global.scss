@@ -26,5 +26,35 @@ body {
   background-color: #fbfbfb;
 }
 
+//global header for each page 
+.global {
+    &__back-button {
+      height: 40px;
+      width: 40px;
+      border: 1px solid $card-border;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+          border: 1px solid $primary;
+      }
+  }
+
+  &__header {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+  }
+
+  &__title {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+  }
+}
+
 
   

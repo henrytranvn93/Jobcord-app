@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Dashboard.scss';
 import searchIcon from '../../assets/icons/search-24px.svg';
-import uniqid from 'uniqid';
 import kidsOnSkate from '../../assets/images/cool-kid-on-skate.svg';
+import { Modal, Button} from 'react-bootstrap';
 
-export default function Dashboard({user, signOut}) {
+export default function Dashboard({user, signOut, docID, setDocID}) {
     const [jobList, setJobList] = useState([]);
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         axios.get(`http://localhost:8080/jobs/${user.uid}`)
@@ -17,7 +18,26 @@ export default function Dashboard({user, signOut}) {
         .catch(err => {
             console.log(err)
         })
-    }, [user.uid])
+    }, [user.uid]);
+
+    const handleDelete = (docID) => {
+        axios.delete(`http://localhost:8080/jobs/${user.uid}/${docID}`)
+        .then(res => {
+            const newJobList = jobList.filter(job => job.docID !== docID);
+            setJobList(newJobList);
+            console.log(res.data);
+            setShow(false);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+    
+    const handleClose = () => setShow(false);
+    const handleShow = (docid) => {
+        setShow(true);
+        setDocID(docid);
+    };
 
 
     return (
@@ -49,7 +69,7 @@ export default function Dashboard({user, signOut}) {
             </div>
             <div className="dashboard__job-applications">
                 {jobList.length > 0 ? jobList.map(job =>    
-                <div className="dashboard__job-application" key={uniqid()}>
+                <div className="dashboard__job-application" key={job.id}>
                     <div className="dashboard__job-header">
                         <h5 className="dashboard__job-header-text">{job.position}</h5>
                     </div>
@@ -60,10 +80,14 @@ export default function Dashboard({user, signOut}) {
                             <p className="dashboard__job-position">{job.city}, {job.state} {job.country}</p>
                         </div>
                         <div className="dashboard__job-actions">
-                            <button className="dashboard__job-details button-small">Details</button>
+                            <Link to='/details'>
+                                <button onClick={() => setDocID(job.docID)} className="dashboard__job-details button-small">
+                                    Details
+                                </button>
+                            </Link>
                             <div className="dashboard__edit-delete">
-                                <button className="dashboard__edit button-small">Edit</button>
-                                <button className="dashboard__delete button-small">Del</button>
+                                {/* <button className="dashboard__edit button-small">Edit</button> */}
+                                <button onClick={() => handleShow(job.docID)} className="dashboard__delete button-small">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -71,13 +95,22 @@ export default function Dashboard({user, signOut}) {
                 : <div className="dashboard__no-jobs">
                     <img src={kidsOnSkate} alt="Cool Kid on wheels" className="dashboard__no-job-image" />
                     <h5 className="dashboard__no-job-text">You do not have any job application, please add one!</h5>
-                </div>
-               }
-             
+                </div>}
             </div>
-
-        
-            
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Deleted job cannot be recovered !</Modal.Body>
+                <Modal.Footer>
+                    <Button className="delete-modal__button-close" variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button className="delete-modal__button-delete" variant="primary" onClick={() => handleDelete(docID)}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>   
         </div>
     )
 }

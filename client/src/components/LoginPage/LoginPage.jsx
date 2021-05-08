@@ -15,7 +15,7 @@ firebase.initializeApp({
     appId: process.env.REACT_APP_FIREBASE_APP_ID
 });
 
-export default function LoginPage({getUserUID}) {
+export default function LoginPage({getUserUID, docID, setDocID}) {
     const [loading, setLoading] = useState(true);
     const [signedIn, setSignedIn] = useState(false);
 
@@ -34,7 +34,7 @@ export default function LoginPage({getUserUID}) {
             }
         });
         return () => unregisterAuthObeserver();
-    },);
+    });
 
     const uiConfig = {
         signInFlow: "popup",
@@ -53,7 +53,7 @@ export default function LoginPage({getUserUID}) {
     }
     
 
-    return ( signedIn ? <Dashboard user={firebase.auth().currentUser} signOut={signOut}/> :
+    return ( signedIn ? <Dashboard user={firebase.auth().currentUser} signOut={signOut} docID={docID} setDocID={setDocID}/> :
         <>
         {loading === false 
         ? <div className="login">

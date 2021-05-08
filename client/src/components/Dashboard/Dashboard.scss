@@ -181,7 +181,7 @@
         background-color: $primary;
         color: white;
         cursor: pointer;
-        width: 40px;
+        width: 55px;
         height: 30px;
         font-size: 12px;
         position: relative;
@@ -219,4 +219,28 @@
           text-align: center;
           margin: 0 2rem;
       }
+}
+
+.delete-modal {
+
+    &__button-delete {
+        border-radius: 10px;
+    }
+
+    &__button-close {
+        border-radius: 10px;
+        background-color: white;
+        color: $DarkInk;
+        border: 2px solid $card-border;
+
+        &:hover, &:focus {
+            color: $DarkInk;
+            background-color: white;
+            border: 2px solid $secondary;
+        }
+
+        &:active:after {
+            background-color: none;
+        }
+    }
 }

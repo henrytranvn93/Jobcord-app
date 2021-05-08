@@ -3,21 +3,6 @@
 
 .jobAdd {
 
-    &__back-button {
-        height: 40px;
-        width: 40px;
-        border: 1px solid $card-border;
-        border-radius: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-
-        &:hover {
-            border: 1px solid $primary;
-        }
-    }
-
     &__form {
         margin-bottom: 50px;
     }
@@ -28,20 +13,9 @@
 
     &__input-textarea {
         resize: none;
-        height: 200px;
     }
 
-    &__header {
-        display: flex;
-        align-items: center;
-        margin: 1rem 0;
-    }
 
-    &__title {
-        margin: 0;
-        width: 100%;
-        text-align: center;
-    }
 
     &__buttons {
         margin-top: 10px;
@@ -55,6 +29,7 @@
             color: white;
         }
     }
+
     &__cancel-button {
         color: $DarkInk;
         background-color: white;
@@ -79,4 +54,12 @@
 
 .form-label {
     margin: 4px 0;
+}
+
+textarea.form-control {
+    height: 150px;
+
+    @include tablet {
+        height: 200px;
+    }
 }

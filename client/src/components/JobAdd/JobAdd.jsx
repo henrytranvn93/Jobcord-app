@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, Prompt } from 'react-router-dom';
 import backIcon from '../../assets/icons/back-arrow.svg';
 import './JobAdd.scss';
 import {Form, Button, Col} from 'react-bootstrap';
@@ -26,7 +26,7 @@ export default function JobAdd({user, history}) {
                 company: formTarget.company.value,
                 date: convertDate(formTarget.date.value),
                 position: formTarget.position.value,
-                address: formTarget.postion.address,
+                address: '',
                 city: formTarget.city.value,
                 state: formTarget.state.value,
                 country: formTarget.country.value,
@@ -46,15 +46,16 @@ export default function JobAdd({user, history}) {
 
     return ( user === undefined ? <Redirect to="/"/> :
         <div className="jobAdd">
-            <div className="jobAdd__header">
+            <div className="global__header">
                 <Link to="/">
-                    <div className="jobAdd__back-button">
-                        <img src={backIcon} alt="Back Icon" className="jobAdd__back-icon"/>
+                    <div className="global__back-button">
+                        <img src={backIcon} alt="Back Icon" className="global__back-icon"/>
                     </div>
                 </Link>
-                <h4 className="jobAdd__title">Add Job Application</h4>
+                <h4 className="global__title">Add Job Application</h4>
             </div>
             <Form noValidate validated={validated} onSubmit={handleSubmit} className="jobAdd__form">
+                <Prompt message="Are you sure?" />
                 <Form.Row>
                     <Form.Group as={Col} md="4" controlId="validationPosition">
                         <Form.Label>Position</Form.Label>
@@ -99,19 +100,6 @@ export default function JobAdd({user, history}) {
                     </Form.Group>
                 </Form.Row>
                 <Form.Row>
-                    <Form.Group as={Col} md="4" controlId="validationAddress">
-                        <Form.Label>Address</Form.Label>
-                        <Form.Control 
-                            type="text" 
-                            placeholder="Address" 
-                            className="jobAdd__input"
-                            name="address"
-                        />
-                        <Form.Control.Feedback>Address is optional.</Form.Control.Feedback>
-                        <Form.Control.Feedback type="invalid">
-                            Please provide a valid address.
-                        </Form.Control.Feedback>
-                    </Form.Group>
                     <Form.Group as={Col} md="4" controlId="validationCity">
                         <Form.Label>City</Form.Label>
                         <Form.Control 
@@ -151,7 +139,7 @@ export default function JobAdd({user, history}) {
                             Please provide a valid Country.
                         </Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group as={Col} md="4" controlId="validationCountry">
+                    <Form.Group as={Col} md="12" controlId="validationCountry">
                         <Form.Label>Job Description</Form.Label>
                         <Form.Control 
                             as="textarea"
