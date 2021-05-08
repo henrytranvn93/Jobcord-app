@@ -1,0 +1,102 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixin' as *;
+
+.jobDetails {
+
+    &__title {
+        position: relative;
+        right: 15px;
+    }
+
+    &__heading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+
+    &__company, &__position {
+        text-align: center;
+    }
+
+    &__position {
+        color: $DarkInk;
+    }
+
+    &__navigation {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    &__navigate-box {
+        text-align: center;
+        padding: 10px 15px;
+        background-color: $card-background;
+        width: 25%;
+        height: 42px;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 14px;
+        color: $Ink;
+
+        &:hover {
+            background-color: $primary;
+            color: white;
+        }
+    }
+
+    &__description-title {
+        border-radius: 14px 0 0 14px;
+        margin-right: 4px;
+      
+    }
+
+    &__contact-title {
+        margin-right: 4px;
+    }
+
+    &__resume-title {
+        border-radius: 0 14px 14px 0;
+        margin-left: 4px
+    }
+}
+
+.box-active {
+    font-weight: 500;
+    color: $DarkInk;
+}
+
+// jobInfo
+.jobInfo {
+
+    &__image-container {
+        margin: 10px 0;
+    }
+
+    &__hero-image {
+        width: 100%;
+    }
+}
+
+//roadmap
+.roadmap {
+
+    &__image-container {
+        margin: 30px 0 10px 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    
+    }
+
+    &__image {
+        width: 100%
+    }
+
+    &__texts {
+        text-align: center;
+        color: $DarkInk;
+    }
+}

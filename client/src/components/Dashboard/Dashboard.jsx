@@ -94,7 +94,8 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
                 </div>)
                 : <div className="dashboard__no-jobs">
                     <img src={kidsOnSkate} alt="Cool Kid on wheels" className="dashboard__no-job-image" />
-                    <h5 className="dashboard__no-job-text">You do not have any job application, please add one!</h5>
+                    <h4 className="dashboard__no-job-title">No Job Found !</h4>
+                    <p className="dashboard__no-job-text">You do not have any job application, please add one!</p>
                 </div>}
             </div>
             <Modal show={show} onHide={handleClose}>

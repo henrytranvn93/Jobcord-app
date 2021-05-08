@@ -42,7 +42,6 @@ router.get('/details/:userid/:docid', (req, res) => {
     })
 });
 
-
 router.post('/:userid', (req, res) => {
     const userId = req.params.userid;
     usersDb.doc(`${userId}`).collection('jobs').add({
