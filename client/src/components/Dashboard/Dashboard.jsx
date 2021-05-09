@@ -36,7 +36,7 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
     }
 
     const handleChange = (e) => {
-        setFilter(e.target.value.toLowerCase())
+        setFilter(e.target.value)
     }
     
     const handleClose = () => setShow(false);
@@ -46,7 +46,7 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
     };
 
     const jobListFilted = filter !== '' ? jobList.filter((job) => {
-        return job.company.toLowerCase().includes(filter);
+        return job.company.toLowerCase().includes(filter.toLowerCase()) || job.position.toLowerCase().includes(filter.toLowerCase());
     }) : jobList
 
 
@@ -75,7 +75,7 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
                 name="search"
                 value={filter}
                 onChange={handleChange}
-                placeholder="Search by company name" 
+                placeholder="Search by company name or position" 
                 className="dashboard__search-input"
               />
             </div>

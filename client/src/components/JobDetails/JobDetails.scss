@@ -112,6 +112,8 @@
     }
 
     &__description {
+
+        width: 100%;
         
         @include tablet {
             max-width: 500px;
