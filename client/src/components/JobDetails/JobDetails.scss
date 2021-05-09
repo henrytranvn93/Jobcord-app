@@ -73,8 +73,26 @@
 .jobContact {
     display: flex;
     flex-direction: column;
-
     justify-content: center;
+    align-items: center;
+
+    &__image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    &__description {
+        
+        @include tablet {
+            max-width: 500px;
+        }
+    }
+
+    &__hero-image {
+        max-width: 375px;
+    }
 
 }
 
@@ -91,6 +109,13 @@
 
     &__hero-image {
         width: 100%;
+    }
+
+    &__description {
+        
+        @include tablet {
+            max-width: 500px;
+        }
     }
 
     &__description-header {

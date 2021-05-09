@@ -43,8 +43,8 @@ export default function JobContact({job, user, docID, history, setUpdate}) {
     }   
     return (
         <div className="jobContact">
-             <div className="jobInfo__image-container">
-                <img src={contact} alt="Girl with description" className="jobInfo__hero-image" />
+             <div className="jobContact__image-container">
+                <img src={contact} alt="Girl with description" className="jobContact__hero-image" />
             </div>
             <div className="jobContact__description">
                 <div className="jobInfo__description-header">

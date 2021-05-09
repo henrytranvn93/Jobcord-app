@@ -6,7 +6,7 @@ import construction from '../../assets/images/under-construction.svg';
 export default function Statistics() {
     return (
         <div className="statistics">
-            <img src={construction} alt="under construction" />
+            <img src={construction} alt="under construction" className="statistics__image"/>
             <h5>Coming Soon!</h5>
             <p>Feature helps you tracking all statistics regarding your job application</p>
             <NavBar/>

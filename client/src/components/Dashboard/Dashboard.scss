@@ -112,6 +112,10 @@
               flex-wrap: wrap;
               justify-content: space-between;
           }
+
+          @include desktop {
+              justify-content: flex-start;
+          }
       }
 
       &__job-application {
@@ -133,6 +137,11 @@
 
           @include tablet {
               width: 48%;
+          }
+
+          @include desktop {
+              width: 25%;
+              margin-right: 25px;
           }
       }
       &__job-header {
