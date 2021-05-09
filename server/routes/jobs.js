@@ -14,6 +14,7 @@ admin.initializeApp({
 const db = admin.firestore();
 const storage = admin.storage();
 const usersDb = db.collection('users');
+
 //get list of job application with needed information
 router.get('/:userid', (req, res) => {
     const userId = req.params.userid;
@@ -69,6 +70,21 @@ router.post('/:userid', (req, res) => {
     })
 });
 
+router.post('/upload/:userid/:docid', (req, res) => {
+    const userId = req.params.userid;
+    const docID = req.params.docid;
+
+    usersDb.doc(`${userId}`).collection('jobs').doc(`${docID}`).update({
+        resumeName: req.body.resumeName,
+        resumeURL: req.body.resumeURL
+    })
+    .then(() => {
+        res.status(201).send('Successfully upload resume');
+    }).catch(err => {
+        console.log(err)
+    })
+});
+
 router.delete('/:userid/:docID', (req, res) => {
     const userId = req.params.userid;
     const docID = req.params.docID;
@@ -109,28 +125,11 @@ router.put('/contact/:userid/:docID', (req, res) => {
         country: req.body.country
     })
     .then(() => {
-        res.status(201).send('Successfully update job info');
+        res.status(201).send('Successfully update job contact');
     }).catch(err => {
         res.status(400).send(err);
     })
 });
-
-router.post('/upload/:userid/:docid', (req, res) => {
-    const userId = req.params.userid;
-    const docID = req.params.docid;
-
-    usersDb.doc(`${userId}`).collection('jobs').doc(`${docID}`).update({
-        resumeName: req.body.resumeName,
-        resumeURL: req.body.resumeURL
-    })
-    .then(() => {
-        res.status(201).send('Successfully upload resume');
-    }).catch(err => {
-        console.log(err)
-    })
-})
-
-
 
 
 
