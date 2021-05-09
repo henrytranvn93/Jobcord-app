@@ -96,8 +96,16 @@
           bottom: 15px;
       }
 
+      &__job-total {
+          color: $primary;
+          text-align: right;
+          font-size: 16px;
+          font-weight: 500;
+          margin: 4px 0;
+      }
+
       &__job-applications {
-          margin: 2rem 0;
+          margin: 10px 0 2rem 0;
 
           @include tablet {
               display: flex;
@@ -134,7 +142,6 @@
       &__job-header-text {
           margin: 0;
           color: $DarkInk;
-       
       }
 
       &__job-body {
@@ -193,23 +200,6 @@
         }
       }
 
-      &__edit {
-        border: 2px solid $card-border;
-        border-radius: 10px;
-        background-color: white;
-        color: $DarkInk;
-        cursor: pointer;
-        width: 40px;
-        height: 30px;
-        font-size: 12px;
-        position: relative;
-        bottom: 5px;
-
-        &:hover {
-            border: 2px solid $primary;
-        }
-      }
-
       &__no-job-image {
           width: 100%;
       }
@@ -223,28 +213,4 @@
           text-align: center;
           margin: 0 2rem;
       }
-}
-
-.delete-modal {
-
-    &__button-delete {
-        border-radius: 10px;
-    }
-
-    &__button-close {
-        border-radius: 10px;
-        background-color: white;
-        color: $DarkInk;
-        border: 2px solid $card-border;
-
-        &:hover, &:focus {
-            color: $DarkInk;
-            background-color: white;
-            border: 2px solid $secondary;
-        }
-
-        &:active:after {
-            background-color: none;
-        }
-    }
 }

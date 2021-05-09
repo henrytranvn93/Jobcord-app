@@ -15,12 +15,15 @@
     }
 
 
-    &__company, &__position {
+    &__company {
+        margin-bottom: 5px;
         text-align: center;
     }
 
     &__position {
         color: $DarkInk;
+        text-align: center;
+        margin-bottom: 8px;
     }
 
     &__navigation {
@@ -41,8 +44,7 @@
         color: $Ink;
 
         &:hover {
-            background-color: $primary;
-            color: white;
+            background-color: #e3c2ae;
         }
     }
 
@@ -66,9 +68,22 @@
     font-weight: 500;
     color: $DarkInk;
 }
+//jobContact 
+
+.jobContact {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+}
 
 // jobInfo
 .jobInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     &__image-container {
         margin: 10px 0;
@@ -77,26 +92,151 @@
     &__hero-image {
         width: 100%;
     }
+
+    &__description-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__description-texts {
+        color: $DarkInk;
+    }
+
+    &__edit {
+        border: 2px solid $card-border;
+        border-radius: 10px;
+        background-color: white;
+        color: $DarkInk;
+        cursor: pointer;
+        width: 40px;
+        height: 30px;
+        font-size: 12px;
+        position: relative;
+        bottom: 5px;
+
+        &:hover {
+            border: 2px solid $primary;
+        }
+    }
+
+    &__description-texts {
+        text-align: justify;
+    }
 }
 
 //roadmap
 .roadmap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 
     &__image-container {
         margin: 30px 0 10px 0;
-        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
     
     }
 
-    &__image {
-        width: 100%
-    }
 
     &__texts {
         text-align: center;
         color: $DarkInk;
     }
+}
+
+//jobResume 
+.jobResume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__image-container {
+        margin-top: 15px;
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__upload {
+        display: none;
+    }
+
+    &__form-submit {
+        border-radius: 10px;
+        background-color: $secondary;
+        color: white;
+        cursor: pointer;
+        width: 70px;
+        height: 30px;
+        font-size: 13px;
+        font-weight: 500;
+        border: none;
+
+        &:hover, &:focus {
+            background-color: #8496ad;
+        }
+    }
+
+    &__file-name {
+        color: $DarkInk;
+        margin-bottom: 8px;
+    }
+
+    &__current-resume {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+        height: 70px;
+        width: auto;
+        padding: 0 10px;
+        border: 2px solid $card-border;
+        margin-top: 15px;
+
+    }
+
+    &__current-resume-text {
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    &__currrent-link {
+        color: $success;
+    }
+
+}
+
+label#upload-label {
+    border-radius: 10px;
+    padding: 5px;
+    width: 180px;
+    height: 35px;
+    text-align: center;
+    background-color: $primary;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+
+    &:hover, &:focus {
+        background-color: $primary-hover;
+    }
+
+    &:active:after {
+        background-color: none;
+    }
+
 }

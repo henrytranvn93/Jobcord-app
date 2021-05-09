@@ -56,5 +56,51 @@ body {
   }
 }
 
+//modal styling
+
+.modal {
+
+  &__button-primary {
+      border-radius: 10px;
+  }
+
+  &__button-secondary {
+      border-radius: 10px;
+      background-color: white;
+      color: $DarkInk;
+      border: 2px solid $card-border;
+
+      &:hover, &:focus {
+          color: $DarkInk;
+          background-color: white;
+          border: 2px solid $secondary;
+      }
+
+      &:active:after {
+          background-color: none;
+      }
+  }
+}
+
+.jobContact {
+
+  &__label {
+    font-weight: 500;
+    color: $Ink;
+  }
+
+  &__body {
+    margin-left: 10%;
+  }
+
+  &__info {
+    display: flex;
+  }
+  
+  &__label {
+    margin-right: 10px;
+  }
+}
+
 
   

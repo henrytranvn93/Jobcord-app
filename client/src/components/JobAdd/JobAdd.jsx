@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link, Redirect, Prompt } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import backIcon from '../../assets/icons/back-arrow.svg';
 import './JobAdd.scss';
 import {Form, Button, Col} from 'react-bootstrap';
@@ -55,7 +55,6 @@ export default function JobAdd({user, history}) {
                 <h4 className="global__title">Add Job Application</h4>
             </div>
             <Form noValidate validated={validated} onSubmit={handleSubmit} className="jobAdd__form">
-                <Prompt message="Are you sure?" />
                 <Form.Row>
                     <Form.Group as={Col} md="4" controlId="validationPosition">
                         <Form.Label>Position</Form.Label>

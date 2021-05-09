@@ -9,6 +9,7 @@ import { Modal, Button} from 'react-bootstrap';
 export default function Dashboard({user, signOut, docID, setDocID}) {
     const [jobList, setJobList] = useState([]);
     const [show, setShow] = useState(false);
+    const [filter, setFilter] = useState('');
 
     useEffect(() => {
         axios.get(`http://localhost:8080/jobs/${user.uid}`)
@@ -16,7 +17,7 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
             setJobList(res.data);
         })
         .catch(err => {
-            console.log(err)
+            console.log(err);
         })
     }, [user.uid]);
 
@@ -32,12 +33,20 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
             console.log(err)
         })
     }
+
+    const handleChange = (e) => {
+        setFilter(e.target.value.toLowerCase())
+    }
     
     const handleClose = () => setShow(false);
     const handleShow = (docid) => {
         setShow(true);
         setDocID(docid);
     };
+
+    const jobListFilted = filter !== '' ? jobList.filter((job) => {
+        return job.company.toLowerCase().includes(filter);
+    }) : jobList
 
 
     return (
@@ -63,12 +72,15 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
               <input 
                 type="text" 
                 name="search"
+                value={filter}
+                onChange={handleChange}
                 placeholder="Search by company name" 
                 className="dashboard__search-input"
               />
             </div>
+            {jobList.length > 1 && <p className="dashboard__job-total">{`${jobList.length} Jobs`}</p>}
             <div className="dashboard__job-applications">
-                {jobList.length > 0 ? jobList.map(job =>    
+                {jobList.length > 0 ? jobListFilted.map(job =>    
                 <div className="dashboard__job-application" key={job.id}>
                     <div className="dashboard__job-header">
                         <h5 className="dashboard__job-header-text">{job.position}</h5>
@@ -86,7 +98,6 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
                                 </button>
                             </Link>
                             <div className="dashboard__edit-delete">
-                                {/* <button className="dashboard__edit button-small">Edit</button> */}
                                 <button onClick={() => handleShow(job.docID)} className="dashboard__delete button-small">Delete</button>
                             </div>
                         </div>
@@ -104,10 +115,10 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
                 </Modal.Header>
                 <Modal.Body>Deleted job cannot be recovered !</Modal.Body>
                 <Modal.Footer>
-                    <Button className="delete-modal__button-close" variant="secondary" onClick={handleClose}>
+                    <Button className="modal__button-secondary" variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button className="delete-modal__button-delete" variant="primary" onClick={() => handleDelete(docID)}>
+                    <Button className="modal__button-primary" variant="primary" onClick={() => handleDelete(docID)}>
                         Delete
                     </Button>
                 </Modal.Footer>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './JobDetails.scss';
 import JobInfo from './JobInfo';
 import JobContact from './JobContact';
@@ -9,21 +9,23 @@ import JobRoadMap from './JobRoadMap';
 import backIcon from '../../assets/icons/back-arrow.svg';
 import axios from 'axios';
 
-export default function JobDetails({user, docID}) {
+export default function JobDetails({user, docID, history}) {
     const [job, setJob] = useState({});
     const [content, setContent] = useState('info');
+    const [update, setUpdate] = useState(false);
 
     useEffect(() => {
+        if(user !== undefined){
         axios.get(`http://localhost:8080/jobs/details/${user}/${docID}`)
         .then(res => {
             setJob(res.data);
         })
         .catch(err => {
             console.log(err);
-        })
-    }, [user, docID])
+        })}
+    }, [user, docID, update]);
 
-    return ( docID === '' ? <Redirect to="/"/> :
+    return ( docID === '' ? <h2>Loading...</h2> :
         <div className="jobDetails">
             <div className="global__header">
                 <Link to="/">
@@ -34,8 +36,8 @@ export default function JobDetails({user, docID}) {
                 <h4 className="global__title jobDetails__title">Job Details</h4>
             </div>
             <div className="jobDetails__heading">
-                <h4 className="jobDetails__company">Google</h4>
-                <p className="jobDetails__position">Software Engineer</p>
+                <h4 className="jobDetails__company">{job.company}</h4>
+                <p className="jobDetails__position">{job.position}</p>
                 <div className="jobDetails__navigation">
                     <div 
                         id="info"
@@ -68,10 +70,10 @@ export default function JobDetails({user, docID}) {
                 </div>
             </div>
             <div className="jobDetails__content">
-                {content === 'info' && <JobInfo job={job} />}
-                {content === 'contact' && <JobContact job={job} />}
+                {content === 'info' && <JobInfo user={user} docID={docID} job={job} history={history} setUpdate={setUpdate} />}
+                {content === 'contact' && <JobContact user={user} docID={docID} job={job} history={history} setUpdate={setUpdate}/>}
                 {content === 'roadmap' && <JobRoadMap />}
-                {content === 'resume' && <JobResume job={job} />}
+                {content === 'resume' && <JobResume user={user} docID={docID} job={job} history={history} setUpdate={setUpdate}/>}
             </div>
         </div>
     )

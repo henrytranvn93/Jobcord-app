@@ -3,6 +3,7 @@ import './LoginPage.scss';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import logo from '../../assets/logo/logo-jobcord.png';
 import firebase from 'firebase';
+import "firebase/storage";
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import Dashboard from '../Dashboard/Dashboard';
 
@@ -14,6 +15,8 @@ firebase.initializeApp({
     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_FIREBASE_APP_ID
 });
+
+export const storage = firebase.storage();
 
 export default function LoginPage({getUserUID, docID, setDocID}) {
     const [loading, setLoading] = useState(true);
@@ -50,6 +53,7 @@ export default function LoginPage({getUserUID, docID, setDocID}) {
 
     const signOut = () => {
         firebase.auth().signOut();
+        setDocID('');
     }
     
 
