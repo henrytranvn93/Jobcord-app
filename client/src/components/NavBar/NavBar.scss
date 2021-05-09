@@ -1,0 +1,52 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixin' as *;
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid $card-border;
+    border-radius: 16px 16px 0 0;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: -10px;
+    background-color: $background-white;
+
+    &__jobs {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__statistics {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__icon {
+        height: 24px;
+        width: 24px;
+    }
+
+    &__text {
+        font-size: 13px;
+    }
+
+    &__link {
+        color: $DarkInk;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__active {
+        color: $primary;
+        font-weight: 500;
+    }
+}

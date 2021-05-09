@@ -4,6 +4,8 @@ import './styles/global.scss';
 import LoginPage from './components/LoginPage/LoginPage';
 import JobAdd from './components/JobAdd/JobAdd';
 import JobDetails from './components/JobDetails/JobDetails';
+import Statistics from './components/Statistics/Statistics';
+
 
 function App() {
   const [user, setUser] = useState();
@@ -42,7 +44,7 @@ function App() {
 
           <Route path="/details" render={(routeProps) => <JobDetails {...routeProps} user={user} docID={docID}/>}/>
 
-
+          <Route path="/statistics" render={() => <Statistics />}/>
         </Switch>
       </Router>
     </div>

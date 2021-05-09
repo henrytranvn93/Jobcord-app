@@ -18,7 +18,7 @@ firebase.initializeApp({
 
 export const storage = firebase.storage();
 
-export default function LoginPage({getUserUID, docID, setDocID}) {
+export default function LoginPage({getUserUID, docID, setDocID, status, setStatus}) {
     const [loading, setLoading] = useState(true);
     const [signedIn, setSignedIn] = useState(false);
 
@@ -57,7 +57,7 @@ export default function LoginPage({getUserUID, docID, setDocID}) {
     }
     
 
-    return ( signedIn ? <Dashboard user={firebase.auth().currentUser} signOut={signOut} docID={docID} setDocID={setDocID}/> :
+    return ( signedIn ? <Dashboard user={firebase.auth().currentUser} signOut={signOut} docID={docID} setDocID={setDocID} status={status} setStatus={setStatus}/> :
         <>
         {loading === false 
         ? <div className="login">

@@ -5,6 +5,7 @@ import './Dashboard.scss';
 import searchIcon from '../../assets/icons/search-24px.svg';
 import kidsOnSkate from '../../assets/images/cool-kid-on-skate.svg';
 import { Modal, Button} from 'react-bootstrap';
+import NavBar from '../NavBar/NavBar';
 
 export default function Dashboard({user, signOut, docID, setDocID}) {
     const [jobList, setJobList] = useState([]);
@@ -122,7 +123,8 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
                         Delete
                     </Button>
                 </Modal.Footer>
-            </Modal>   
+            </Modal>
+            <NavBar />   
         </div>
     )
 }
