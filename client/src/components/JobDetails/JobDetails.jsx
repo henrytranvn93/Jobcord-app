@@ -19,6 +19,7 @@ export default function JobDetails({user, docID, history}) {
         axios.get(`http://localhost:8080/jobs/details/${user}/${docID}`)
         .then(res => {
             setJob(res.data);
+            setUpdate(false);
         })
         .catch(err => {
             console.log(err);
