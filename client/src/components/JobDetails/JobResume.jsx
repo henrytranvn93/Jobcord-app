@@ -48,7 +48,7 @@ export default function JobResume({user, docID, job, history, setUpdate}) {
             </div>
             {job.resumeName && <div className="jobResume__current-resume">
                     <p className="jobResume__current-resume-text">Current Resume</p>
-                    <a className="jobResume__current-link" href={`${job.resumeURL}`}>{job.resumeName}</a>
+                    <a className="jobResume__current-link" href={`${job.resumeURL}`} target="_blank" rel="noopener noreferrer">{job.resumeName}</a>
                     </div>}
             <form className="jobResume__form" onSubmit={handleSubmit}>
                 <input 
