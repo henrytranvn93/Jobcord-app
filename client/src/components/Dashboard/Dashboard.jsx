@@ -79,7 +79,7 @@ export default function Dashboard({user, signOut, docID, setDocID}) {
                 className="dashboard__search-input"
               />
             </div>
-            {jobList.length > 1 && <p className="dashboard__job-total">{`${jobList.length} Jobs`}</p>}
+            {jobList.length > 1 && <p className="dashboard__job-total">{`${jobListFilted.length} Jobs`}</p>}
             <div className="dashboard__job-applications">
                 {jobList.length > 0 ? jobListFilted.map(job =>    
                 <div className="dashboard__job-application" key={job.id}>
